@@ -96,29 +96,35 @@ if __name__ == '__main__':
             #print('ini y[0] dst',y[0],y[1],y[2])
             if (y[0] == 'amod') and ((y[1] - y[2]) > 0): #adjectival modifier
                 #aspect = words[y[1] - 1] + " adj mod"
+                print('y1 bos ',y[1])
                 aspect = words[y[1] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'djob'): #direct object - changed from dobj to comp
                 #aspect = words[y[2] - 1] + " dir obj"
                 #print('y[0] ',y[0],' = target ',parsed)
                 #print('y[1]', y[1],' = source ', 'djob')
+                print('y1 bos ',y[1])
                 aspect = words[y[2] - 1]
-                
+
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'acomp'): #adjectival complement
                 #aspect = words[y[2] - 1] + " adj com"
+                print('y1 bos ',y[1])
                 aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'cop'): #complement of a copular verb
                 #aspect = words[y[2] - 1] + " com verb"
+                print('y1 bos ',y[1])
                 aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubjpass') and asteriskRelation(parsed, y, 'advmod'): #adverbial modifier to a passive verb
                 #aspect = words[y[2] - 1] + " adv mod"
+                print('y1 bos ',y[1])
                 aspect = words[y[2] - 1]
 
             elif (y[0] == 'compound') and ((y[1] - y[2]) > 0): #compound noun
                 #aspect = words[y[2] - 1] + " " + words[y[1] - 1]
                 #aspect = words[y[1] - 1] + " com noun"
+                print('y1 bos ',y[1])
                 aspect = words[y[1] - 1]
 
         aspectFromSourceData = sourceAspcets(texts[x])

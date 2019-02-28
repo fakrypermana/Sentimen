@@ -29,12 +29,12 @@ start-up[-2],start-up,1
 flash[-2],flash,1
 room[-2],in,0
 macro[-2],function,0
-focus[-2],auto-focus,0
+focus[-2],,1
 ,override,0
 focus[+2],shot,0
 ,these,0
 ,choice,0
-camera[+2],you,0
+camera[+2],thing,0
 ,choice,0
 ,camera,0
 ,,1
@@ -53,11 +53,11 @@ autofocus[-2],system,0
 camera[-2],you,0
 ,it,0
 ,it,0
-,it,0
+,,1
 picture[+3],paper,0
 ,toy,0
 ,camera,0
-camera[+3],you,0
+camera[+3],image,0
 "picture[+2],resolution[+2]",resolution,1
 ,,1
 ,,1
@@ -66,7 +66,7 @@ software[+2],software,1
 battery[+1],,1
 camera[+2],camera,1
 ,,1
-,still,0
+,camera,0
 camera[+3],camera,1
 ,friend,0
 ,i,0
@@ -74,7 +74,7 @@ camera[+3],camera,1
 ,i,0
 camera[+2],slr,0
 ,money,0
-exposure[+1],which,0
+exposure[+1],exposure,1
 flash[+2],mode,0
 zoom[-1],complaint,0
 "body[+2],quality[+2]",body,1
@@ -133,7 +133,7 @@ quality[+2],quality,1
 ,we,0
 "exposure[+2],printer[+2],camera[+2]",camera,1
 ,zoom,0
-"resolution[+1],camera[+1]",i,1
+"resolution[+1],camera[+1]",resolution,1
 camera[+3],dc240,0
 camera[+2],painting,0
 software[+2],elph,0
@@ -141,7 +141,7 @@ software[+2],elph,0
 software[+2],shot,0
 "camera[+1],case[+1],battery[+1]",battery,1
 ,control,0
-,i,0
+,,1
 ,,1
 "picture[+3],rendering[+3]",rendering,1
 "size[+2],case[+1],picture[+1],quality[+1],software[+2]",panorama,0
@@ -211,7 +211,7 @@ image[+2],pocket,0
 camera[+3],camera,1
 ,it,0
 len[+1],cap,0
-metal[+1],metal,1
+metal[+1],,1
 ,turn-on,0
 mode[-1],mode,1
 mode[-1],mode,1
@@ -236,7 +236,7 @@ jewel[-1],jewel,1
 ,pocket,0
 picture[+3],quality,0
 ,proof,0
-manual[-1],i,0
+manual[-1],,1
 ,,1
 ,picture,0
 ,,1
@@ -254,7 +254,7 @@ size[-1],size,1
 ,show,0
 "casing[+2],camera[+2]",casing,1
 ,bandwagon,0
-,love,0
+,,1
 ,investment,0
 control[+2],they,0
 camera[+2],camera,1
@@ -292,7 +292,7 @@ picture[-1],function,0
 camera[+2],camera,1
 ,,1
 ,feature,0
-,you,0
+,card,0
 "picture[+3],camera[+2]",camera,1
 "price[+2],feature[+2],size[+2]",point,0
 ,,1
