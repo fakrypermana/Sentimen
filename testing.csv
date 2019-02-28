@@ -1,0 +1,301 @@
+source,result,similar
+camera[-3],camera com verb,0
+"size[-2],camera[+2]",camera adj mod,0
+camera[+3],thing adj mod,0
+card[-2],card com noun,0
+,card com noun,0
+"memory[-1],battery[-1]",thing adj mod,0
+picture[-2],other com verb,0
+camera[+3],camera com verb,0
+camera[+2],camera com verb,0
+"size[+2],camera[+2]",it com verb,0
+,it dir obj,0
+,,1
+,it com verb,0
+"cover[+2],lens[+2]",cover adj mod,0
+picture quality[-2],i com verb,0
+"picture quality[+3],size[+3],price[+3]",quality com verb,0
+,thing adj mod,0
+,,1
+battery[-2],battery com noun,0
+battery[-2],span com verb,0
+,hour adj mod,0
+,you com verb,0
+zoom[-2],function com noun,0
+length[-2],zoom com verb,0
+,,1
+zoom[-2],you com verb,0
+start-up[-2],start-up adj mod,0
+flash[-2],flash com verb,0
+room[-2],in adj mod,0
+macro[-2],function com noun,0
+focus[-2],auto-focus dir obj,0
+,override adj mod,0
+focus[+2],shot com noun,0
+,these com verb,0
+,choice adj mod,0
+camera[+2],you dir obj,0
+,choice com noun,0
+,camera adj mod,0
+,,1
+,gem adj mod,0
+,i adj mod,0
+,camera adj mod,0
+,,1
+,reviewer adj mod,0
+,it com verb,0
+button[-2],glass com noun,0
+size[-2],tip com noun,0
+picture[-2],shot adj mod,0
+autofocus[-2],system com noun,0
+,card com noun,0
+,card com noun,0
+camera[-2],you dir obj,0
+,it dir obj,0
+,it com verb,0
+,it dir obj,0
+picture[+3],paper com noun,0
+,toy adj mod,0
+,camera adj mod,0
+camera[+3],you dir obj,0
+"picture[+2],resolution[+2]",resolution adj mod,0
+,,1
+,,1
+software[+2],software adj mod,0
+,,1
+battery[+1],,1
+camera[+2],camera com noun,0
+,,1
+,still dir obj,0
+camera[+3],camera adj mod,0
+,friend adj mod,0
+,i com verb,0
+,it dir obj,0
+,i com verb,0
+camera[+2],slr adj mod,0
+,money adj mod,0
+exposure[+1],which dir obj,0
+flash[+2],mode com noun,0
+zoom[-1],complaint adj mod,0
+"body[+2],quality[+2]",body com verb,0
+body[+2],profile adj mod,0
+,zoom adj mod,0
+,screen com noun,0
+design[-2],flaw com noun,0
+,screen com verb,0
+,you com verb,0
+,this com verb,0
+"mode[+3],flash[+3],camera[+3]",background adj mod,0
+,,1
+,card com noun,0
+,fact adj mod,0
+picture[+2],camera adv mod,0
+,resolution com noun,0
+,,1
+,,1
+,setting adj mod,0
+zoom[-3],zoom com verb,0
+,,1
+,,1
+,dsc-p1 com noun,0
+camera[-2],camera adj mod,0
+,,1
+,that com verb,0
+battery[+2],stuff com noun,0
+panorama setting[+3],setting com verb,0
+memory[+2],memory adj mod,0
+picture[-1],dark adj mod,0
+flash[+1],,1
+,s300 com verb,0
+mode[-1],mode com noun,0
+"mode[+2],resolution[+2]",1024x768 com noun,0
+,price com verb,0
+camera[+3],new com verb,0
+,reader com noun,0
+,software com noun,0
+software[-2],software com verb,0
+software[-2],camera com noun,0
+,,1
+memory[-2],thing adj mod,0
+price[+3],price adj mod,0
+,,1
+price[+3],price adj mod,0
+camera[+3],,1
+,image com noun,0
+,apple com verb,0
+,button com noun,0
+battery[+2],saver com noun,0
+,month adj mod,0
+camera[+2],amatuer adj mod,0
+quality[+2],quality adj mod,0
+,it com verb,0
+,moment adj mod,0
+,we com verb,0
+"exposure[+2],printer[+2],camera[+2]",camera adj mod,0
+,zoom com noun,0
+"resolution[+1],camera[+1]",i dir obj,0
+camera[+3],dc240 com noun,0
+camera[+2],painting adj mod,0
+software[+2],elph adj mod,0
+,filmstrip adj mod,0
+software[+2],shot com noun,0
+"camera[+1],case[+1],battery[+1]",battery adj mod,0
+,control com verb,0
+,i dir obj,0
+,,1
+"picture[+3],rendering[+3]",rendering com verb,0
+"size[+2],case[+1],picture[+1],quality[+1],software[+2]",panorama adj mod,0
+"size[+3],camera[+2],design[+2]",design adj mod,0
+"camera[+1],battery[+1],quality[+1]",camera adj mod,0
+,camera adj mod,0
+,,1
+,pocket adj mod,0
+,camera adj mod,0
+,,1
+,,1
+,it com verb,0
+"product[+3],capability[+3]",i adv mod,0
+,camera adj mod,0
+product[+3],job adj mod,0
+,photographer com noun,0
+jewel[+2],jewel adj mod,0
+"usability[+2],performance[+2],expandability[+2],looks[+3],product[+2]",,1
+,,1
+,,1
+,card com noun,0
+"camera[+2],software[+2]",problem adj mod,0
+,it adv mod,0
+software[+2],,1
+"camera[+1],picture[+2],battery[+1]",viewfinder com noun,0
+battery[-2],battery adj mod,0
+picture[-1],i com verb,0
+"balance[+3],focus[+2]",focus com verb,0
+,,1
+,,1
+,photoshopp adj mod,0
+"camera[+2],pic[+2]",subject adj mod,0
+camera[-2],processing com noun,0
+picture[-2],picture adj mod,0
+,camera com noun,0
+,photography adj mod,0
+,camera com noun,0
+,camera adj mod,0
+,elph adj mod,0
+camera[+3],camera adj mod,0
+,it com verb,0
+charger[-1],charger com verb,0
+,it dir obj,0
+,photo adj mod,0
+"shot[+2],camera[+2],screen[+2]",shot adj mod,0
+"zoom[+2],lens[+1]",cap adj mod,0
+software[+2],software com noun,0
+,system com noun,0
+,photography adj mod,0
+,photography adj mod,0
+,that com verb,0
+,card com noun,0
+,image com noun,0
+case[+2],card com noun,0
+,card com noun,0
+,card adj mod,0
+price[+2],elph adj mod,0
+camera[+2],photography adj mod,0
+,,1
+,rendition com noun,0
+,question adj mod,0
+,,1
+image[+2],pocket com noun,0
+,,1
+,which dir obj,0
+,housing adj mod,0
+camera[+3],camera adj mod,0
+,it com verb,0
+len[+1],cap com noun,0
+metal[+1],metal dir obj,0
+,turn-on com verb,0
+mode[-1],mode com noun,0
+mode[-1],mode adj mod,0
+auto color balance[-1],cloud adj mod,0
+adjustment[+1],condition adj mod,0
+,dc260 com noun,0
+camera[+1],mode com noun,0
+"lcd[+1],battery[+1]",lcd com verb,0
+mode[+2],mode com verb,0
+,,1
+,card com noun,0
+,battery adj mod,0
+"auto mode[+1],camera[+1]",mode com noun,0
+manual mode[+1],exposure adj mod,0
+,8x10 adj mod,0
+camera[+1],camera adj mod,0
+jewel[-1],jewel adj mod,0
+,,1
+,,1
+,,1
+,picture adj mod,0
+,pocket com noun,0
+picture[+3],quality com noun,0
+,proof com noun,0
+manual[-1],i dir obj,0
+,,1
+,picture com noun,0
+,,1
+,case com noun,0
+software[+3],package com noun,0
+tft screen[+1],screen com noun,0
+,,1
+,it com verb,0
+picture[+2],deal adj mod,0
+button[-1],watch com noun,0
+size[-1],size com verb,0
+,? adj mod,0
+,s100 com noun,0
+,,1
+,show adj mod,0
+"casing[+2],camera[+2]",casing adj mod,0
+,bandwagon com noun,0
+,love dir obj,0
+,investment adj mod,0
+control[+2],they com verb,0
+camera[+2],camera adj mod,0
+,module com noun,0
+,shot com noun,0
+zoom[+1],zoom com noun,0
+"capacity[+2],capability[+2]",inventory com noun,0
+,image com noun,0
+,year adj mod,0
+,quality com noun,0
+,it com verb,0
+,what com verb,0
+"battery[+1],memory[+1]",card com noun,0
+,result com verb,0
+,it com verb,0
+"picture[+2],camera[+2]",picture adj mod,0
+picture[+2],picture adj mod,0
+size[+3],love com noun,0
+,battery com noun,0
+picture[-1],function com noun,0
+,i com verb,0
+,,1
+,,1
+,case adj mod,0
+,reader com noun,0
+,camera adj mod,0
+,,1
+,biz com noun,0
+"camera[-1],case[-1]",they com verb,0
+,result adj mod,0
+,s100 com noun,0
+,,1
+,result com verb,0
+,,1
+camera[+2],camera com verb,0
+,,1
+,feature com verb,0
+,you dir obj,0
+"picture[+3],camera[+2]",camera com verb,0
+"price[+2],feature[+2],size[+2]",point com noun,0
+,,1
+,toy adj mod,0
+size[+3],size adj mod,0
+camera[+1],camera adj mod,0
