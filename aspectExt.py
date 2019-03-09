@@ -65,11 +65,9 @@ if __name__ == '__main__':
     resultAspects = []
     similarities = []
     total = 0
-    presisi = 0
-    recall = 0
 
     for x in range(0, len(texts)):
-        aspect = ''
+        aspect = []
         aspectFromSourceData = ''
         type = ''
         isSuitable = 0
@@ -82,14 +80,15 @@ if __name__ == '__main__':
         for i, y in enumerate(parsed):
             #print('ini y[0] dst',y[0],y[1],y[2])
             if (y[0] == 'amod') and ((y[1] - y[2]) > 0): #adjectival modifier
-                aspect = words[y[1] - 1]
+                aspect.append(words[y[1] - 1])
                 print('kata ke ',y[1] - 1)
                 print('words ', words[y[1] - 1])
                 print('type : adj mod')
                 # aspect = words[y[1] - 1]
 
-            elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'djob'): #direct object - changed from dobj to comp
-                aspect = words[y[2] - 1]
+            #elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'xcomp'): #direct object - changed from dobj to comp
+            elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'djob'):
+                aspect.append(words[y[2] - 1])
                 #print('y[0] ',y[0],' = target ',parsed)
                 #print('y[1]', y[1],' = source ', 'djob')
                 print('kata ke ',y[2]- 1)
@@ -98,21 +97,21 @@ if __name__ == '__main__':
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'acomp'): #adjectival complement
-                aspect = words[y[2] - 1]
+                aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
                 print('type : adj com')
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'cop'): #complement of a copular verb
-                aspect = words[y[2] - 1]
+                aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
                 print('type : com verb')
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubjpass') and asteriskRelation(parsed, y, 'advmod'): #adverbial modifier to a passive verb
-                aspect = words[y[2] - 1]
+                aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
                 print('type : adv mob')
@@ -120,7 +119,7 @@ if __name__ == '__main__':
 
             elif (y[0] == 'compound') and ((y[1] - y[2]) > 0): #compound noun
                 #aspect = words[y[2] - 1] + " " + words[y[1] - 1]
-                aspect = words[y[1] - 1]
+                aspect.append(words[y[1] - 1])
                 print('kata ke ',y[1]- 1)
                 print('words ', words[y[1] - 1])
                 print('type : com noun')
@@ -128,16 +127,16 @@ if __name__ == '__main__':
 
         aspectFromSourceData = sourceAspek(texts[x])
         print('source aspect ',aspectFromSourceData)
-        isSuitable = 0 if aspectFromSourceData.find(aspect) < 0 else 1
+        #isSuitable = 0 if aspectFromSourceData.find(aspect) < 0 else 1
         resultAspects.append(aspect)
         print('result aspect ',aspect)
         aspectFromSourceDatas.append(aspectFromSourceData)
-        if isSuitable == 1:
-            total = total + 1 #total isSuitable = 1
-        print('is suitable ? ',isSuitable)
-        similarities.append(isSuitable)
+        # if isSuitable == 1:
+        #     total = total + 1 #total isSuitable = 1
+        # print('is suitable ? ',isSuitable)
+        # similarities.append(isSuitable)
     print('===================================')
     print('data ',len(resultAspects))
-    print('total hasil yang sesuai', total)
-    print('recall ', total/len(resultAspects))
-    resultInCsv(resultAspects, aspectFromSourceDatas, similarities)
+    #print('total hasil yang sesuai', total)
+    #print('recall ', total/len(resultAspects))
+    #resultInCsv(resultAspects, aspectFromSourceDatas, similarities)
