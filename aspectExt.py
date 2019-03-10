@@ -40,6 +40,11 @@ def sourceAspek(text):
 
     return text[:indexText]
 
+def stringSource(text):
+    indextText = text.find('[')
+
+    return text[:indextText]
+
 def asteriskRelation(depParse, source, target):
     for i, y in enumerate(depParse):
         #print('ini y[0] ',y[0],' |target', target,' |ini source ',source[1],' |ini y[1] ', y[1])
@@ -48,17 +53,40 @@ def asteriskRelation(depParse, source, target):
 
     return False
 
-def countPrecRecall(aspect,source):
-    total = 0
-    i = 0
+def checkSameAspect(aspect):
+    realAspect = ''
 
     for x in aspect:
-        for y in source:
-            isSuitable = 0 if x.find(y) < 0 else 1
-            if isSuitable == 1:
-                total = total + 1 #total isSuitable = 1
-                #print('nambah pas di date ke ',y)
+        for y in aspect:
+            if x == y :
+                realAspect = x
+
+    return realAspect
+
+def countExtractedAspect(aspect,source,total):
+
+    for x in aspect:
+        print('ini x ',x)
+        print('ini y ',source)
+        isSuitable = 0 if x.find(source) < 0 else 1
+        print("track precal",isSuitable)
+        if (len(x) != 0 and len(source) == 0) or (len(x) == 0 and len(source) != 0):
+            isSuitable = -1
+        if isSuitable == 1:
+            total = total + 1 #total isSuitable = 1
+            #print('nambah pas di date ke ',y)
     return total
+
+def totalAspectFromSource(aspect, totalAspectSource):
+    print('ampun mak',aspect.split(','))
+    listAspect = []
+    words = aspect.split(',')
+    for i in words :
+        listAspect.append(i)
+
+    totalAspectSource = totalAspectSource + len(listAspect)
+
+    return totalAspectSource
 
 def resultInCsv(result, source, similarities):
     with open('./hasil.csv', '`w', newline='') as csvfile:
@@ -77,10 +105,12 @@ if __name__ == '__main__':
     resultAspects = []
     similarities = []
     total = 0
+    totalAspectSource = 0
 
     for x in range(0, len(texts)):
         #aspect = ''
         aspect = []
+        realAspect = []
         aspectFromSourceData = ''
         type = ''
         isSuitable = 0
@@ -145,18 +175,27 @@ if __name__ == '__main__':
                 # aspect = words[y[1] - 1]
 
         aspectFromSourceData = sourceAspek(texts[x])
+        totalAspectSource = totalAspectFromSource(aspectFromSourceData,totalAspectSource)
+        print('ini length source aspect',totalAspectSource)
+        aspectWithoutValue = stringSource(aspectFromSourceData)
         print('source aspect ',aspectFromSourceData)
         #isSuitable = 0 if aspectFromSourceData.find(aspect) < 0 else 1
+        #realAspect = checkSameAspect(aspect)
         resultAspects.append(aspect)
         print('result aspect ',aspect)
-        aspectFromSourceDatas.append(aspectFromSourceData)
-        total = countPrecRecall(aspect,aspectFromSourceData)
+        aspectFromSourceDatas.append(aspectWithoutValue)
+        total = countExtractedAspect(aspect,aspectWithoutValue,total)
+        print('ini total ',total)
         # if isSuitable == 1:
         #     total = total + 1 #total isSuitable = 1
         # print('is suitable ? ',isSuitable)
         # similarities.append(isSuitable)
+
+
     print('===================================')
-    print('data ',len(resultAspects))
-    print('total hasil yang sesuai', total)
+    precision = total /
+    recall = total / totalAspectSource
+    print('data :',len(resultAspects))
+    print('recall :',recall*100,'%')
     #print('recall ', total/len(resultAspects))
     #resultInCsv(resultAspects, aspectFromSourceDatas, similarities)
