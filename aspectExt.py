@@ -2,6 +2,10 @@ from stanfordcorenlp import StanfordCoreNLP
 import logging
 import json
 import csv
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib import pyplot as plt
+import math
 
 class StanfordNLP:
     def __init__(self, host='http://localhost', port=9000):
@@ -47,7 +51,6 @@ def stringSource(text):
 
 def asteriskRelation(depParse, source, target):
     for i, y in enumerate(depParse):
-        #print('ini y[0] ',y[0],' |target', target,' |ini source ',source[1],' |ini y[1] ', y[1])
         if y[0] == target and source[1] == y[1]:
             return True
 
@@ -63,19 +66,17 @@ def checkSameAspect(aspect):
 
     return realAspect
 
-def countExtractedAspect(aspect,source,total):
+def countExtractedAspect(aspect,source,total,i):
 
     for x in aspect:
-        print('ini x ',x)
-        print('ini y ',source)
         isSuitable = 0 if x.find(source) < 0 else 1
-        print("track precal",isSuitable)
         if (len(x) != 0 and len(source) == 0) or (len(x) == 0 and len(source) != 0):
             isSuitable = -1
         if isSuitable == 1:
             total = total + 1 #total isSuitable = 1
-            #print('nambah pas di date ke ',y)
-    return total
+
+        i = i +1
+    return total,i
 
 def totalAspectFromSource(aspect, totalAspectSource):
     print('ampun mak',aspect.split(','))
@@ -88,14 +89,14 @@ def totalAspectFromSource(aspect, totalAspectSource):
 
     return totalAspectSource
 
-def resultInCsv(result, source, similarities):
-    with open('./hasil.csv', '`w', newline='') as csvfile:
-        fieldnames = ['source', 'result', 'similar']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-
-        for x in range(0, len(result)):
-            writer.writerow({'source': source[x], 'result': result[x], 'similar': similarities[x]})
+# def resultInCsv(result, source, similarities):
+#     with open('./hasil.csv', '`w', newline='') as csvfile:
+#         fieldnames = ['source', 'result', 'similar']
+#         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+#         writer.writeheader()
+#
+#         for x in range(0, len(result)):
+#             writer.writerow({'source': source[x], 'result': result[x], 'similar': similarities[x]})
 
 if __name__ == '__main__':
     sNLP = StanfordNLP()
@@ -106,9 +107,13 @@ if __name__ == '__main__':
     similarities = []
     total = 0
     totalAspectSource = 0
+    aspectTryed = 0
+    grafikPrecision = []
+    grafikRecall = []
+    sumbuVertical = 0
+    sumbuX = []
 
     for x in range(0, len(texts)):
-        #aspect = ''
         aspect = []
         realAspect = []
         aspectFromSourceData = ''
@@ -117,37 +122,30 @@ if __name__ == '__main__':
         onlyText = rmvSign(texts[x])
         parsed = sNLP.dependency_parse(onlyText)
         words = sNLP.lemma(onlyText)
-        #print('hasil lemma',words)
         print('data ----------------------  ',x+1)
+        sumbuVertical = sumbuVertical + 1
+        sumbuX.append(sumbuVertical)
+
 
         for i, y in enumerate(parsed):
-            #print('ini y[0] dst',y[0],y[1],y[2])
             if (y[0] == 'amod') and ((y[1] - y[2]) > 0): #adjectival modifier
                 #aspect = words[y[1] - 1]
                 aspect.append(words[y[1] - 1])
                 print('kata ke ',y[1] - 1)
                 print('words ', words[y[1] - 1])
                 print('type : adj mod')
-                # aspect = words[y[1] - 1]
 
-            #elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'xcomp'): #direct object - changed from dobj to comp
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'djob'):
-                #aspect = words[y[2] - 1]
                 aspect.append(words[y[2] - 1])
-                #print('y[0] ',y[0],' = target ',parsed)
-                #print('y[1]', y[1],' = source ', 'djob')
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
                 print('type : dir obj')
-                # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'acomp'): #adjectival complement
-                #aspect = words[y[2] - 1]
                 aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
                 print('type : adj com')
-                # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'cop'): #complement of a copular verb
                 #aspect = words[y[2] - 1]
@@ -166,36 +164,44 @@ if __name__ == '__main__':
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'compound') and ((y[1] - y[2]) > 0): #compound noun
-                #aspect = words[y[2] - 1] + " " + words[y[1] - 1]
-                #aspect = words[y[1] - 1]
                 aspect.append(words[y[1] - 1])
                 print('kata ke ',y[1]- 1)
                 print('words ', words[y[1] - 1])
                 print('type : com noun')
-                # aspect = words[y[1] - 1]
 
         aspectFromSourceData = sourceAspek(texts[x])
         totalAspectSource = totalAspectFromSource(aspectFromSourceData,totalAspectSource)
-        print('ini length source aspect',totalAspectSource)
+        print('length source aspect',totalAspectSource)
         aspectWithoutValue = stringSource(aspectFromSourceData)
         print('source aspect ',aspectFromSourceData)
-        #isSuitable = 0 if aspectFromSourceData.find(aspect) < 0 else 1
-        #realAspect = checkSameAspect(aspect)
         resultAspects.append(aspect)
         print('result aspect ',aspect)
         aspectFromSourceDatas.append(aspectWithoutValue)
-        total = countExtractedAspect(aspect,aspectWithoutValue,total)
-        print('ini total ',total)
-        # if isSuitable == 1:
-        #     total = total + 1 #total isSuitable = 1
-        # print('is suitable ? ',isSuitable)
-        # similarities.append(isSuitable)
+        total,aspectTryed = countExtractedAspect(aspect,aspectWithoutValue,total,aspectTryed)
+        precision = (total / aspectTryed *100)
+        recall = (total / totalAspectSource *100)
+        grafikPrecision.append(precision)
+        grafikRecall.append(recall)
 
+        # print('ini precision ',precision)
+        # print('ini recall ',recall)
+        # print('aspektryed',aspectTryed)
+        # print('ini total ',total)
 
     print('===================================')
-    precision = total /
-    recall = total / totalAspectSource
-    print('data :',len(resultAspects))
-    print('recall :',recall*100,'%')
-    #print('recall ', total/len(resultAspects))
-    #resultInCsv(resultAspects, aspectFromSourceDatas, similarities)
+    print('               OUTPUT              ')
+    print('===================================')
+    totalPrecision = total / aspectTryed
+    totalRecall = total / totalAspectSource
+    print('data      :',len(resultAspects))
+    print('precision :',totalPrecision*100,'%')
+    print('recall    :',totalRecall*100,'%')
+
+    #Grafik
+    plt.plot(sumbuX,grafikPrecision, label="Precision")
+    plt.plot(sumbuX,grafikRecall, label="Recall")
+    plt.legend(loc='upper left')
+    plt.xlabel('data ke ')
+    plt.ylabel('besar precision & recall dalam %')
+    plt.show()
+
