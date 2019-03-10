@@ -48,8 +48,20 @@ def asteriskRelation(depParse, source, target):
 
     return False
 
+def countPrecRecall(aspect,source):
+    total = 0
+    i = 0
+
+    for x in aspect:
+        for y in source:
+            isSuitable = 0 if x.find(y) < 0 else 1
+            if isSuitable == 1:
+                total = total + 1 #total isSuitable = 1
+                #print('nambah pas di date ke ',y)
+    return total
+
 def resultInCsv(result, source, similarities):
-    with open('./hasil.csv', 'w', newline='') as csvfile:
+    with open('./hasil.csv', '`w', newline='') as csvfile:
         fieldnames = ['source', 'result', 'similar']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -67,6 +79,7 @@ if __name__ == '__main__':
     total = 0
 
     for x in range(0, len(texts)):
+        #aspect = ''
         aspect = []
         aspectFromSourceData = ''
         type = ''
@@ -80,6 +93,7 @@ if __name__ == '__main__':
         for i, y in enumerate(parsed):
             #print('ini y[0] dst',y[0],y[1],y[2])
             if (y[0] == 'amod') and ((y[1] - y[2]) > 0): #adjectival modifier
+                #aspect = words[y[1] - 1]
                 aspect.append(words[y[1] - 1])
                 print('kata ke ',y[1] - 1)
                 print('words ', words[y[1] - 1])
@@ -88,6 +102,7 @@ if __name__ == '__main__':
 
             #elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'xcomp'): #direct object - changed from dobj to comp
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'djob'):
+                #aspect = words[y[2] - 1]
                 aspect.append(words[y[2] - 1])
                 #print('y[0] ',y[0],' = target ',parsed)
                 #print('y[1]', y[1],' = source ', 'djob')
@@ -97,6 +112,7 @@ if __name__ == '__main__':
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'acomp'): #adjectival complement
+                #aspect = words[y[2] - 1]
                 aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
@@ -104,6 +120,7 @@ if __name__ == '__main__':
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubj') and asteriskRelation(parsed, y, 'cop'): #complement of a copular verb
+                #aspect = words[y[2] - 1]
                 aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
@@ -111,6 +128,7 @@ if __name__ == '__main__':
                 # aspect = words[y[2] - 1]
 
             elif (y[0] == 'nsubjpass') and asteriskRelation(parsed, y, 'advmod'): #adverbial modifier to a passive verb
+                #aspect = words[y[2] - 1]
                 aspect.append(words[y[2] - 1])
                 print('kata ke ',y[2]- 1)
                 print('words ', words[y[2] - 1])
@@ -119,6 +137,7 @@ if __name__ == '__main__':
 
             elif (y[0] == 'compound') and ((y[1] - y[2]) > 0): #compound noun
                 #aspect = words[y[2] - 1] + " " + words[y[1] - 1]
+                #aspect = words[y[1] - 1]
                 aspect.append(words[y[1] - 1])
                 print('kata ke ',y[1]- 1)
                 print('words ', words[y[1] - 1])
@@ -131,12 +150,13 @@ if __name__ == '__main__':
         resultAspects.append(aspect)
         print('result aspect ',aspect)
         aspectFromSourceDatas.append(aspectFromSourceData)
+        total = countPrecRecall(aspect,aspectFromSourceData)
         # if isSuitable == 1:
         #     total = total + 1 #total isSuitable = 1
         # print('is suitable ? ',isSuitable)
         # similarities.append(isSuitable)
     print('===================================')
     print('data ',len(resultAspects))
-    #print('total hasil yang sesuai', total)
+    print('total hasil yang sesuai', total)
     #print('recall ', total/len(resultAspects))
     #resultInCsv(resultAspects, aspectFromSourceDatas, similarities)
